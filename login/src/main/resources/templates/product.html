@@ -12,11 +12,11 @@
             <li class="List" th:each="product : ${products}">
                      Produkt: <span th:text="${product.name}"></span><br/><br/>
                      Beskrivning: <span th:text="${product.description}"></span><br/><br/>
-                     Pris: <span th:text="${product.price}"></span><br/><br/>
+                     Pris: <span th:text="${product.price}"></span>kr<br/><br/>
                     
             </li>
         </ul>
     </div> 
-    
+    <a href="/">Startsidan</a>
 </body>
 </html>
