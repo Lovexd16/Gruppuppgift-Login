@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="product">
+        <ul>
+            <li class="List" th:each="product : ${products}">
+                     Produkt: <span th:text="${product.name}"></span><br/><br/>
+                     Beskrivning: <span th:text="${product.description}"></span><br/><br/>
+                     Pris: <span th:text="${product.price}"></span><br/><br/>
+                    
+            </li>
+        </ul>
+    </div> 
+    
+</body>
+</html>
