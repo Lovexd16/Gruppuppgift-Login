@@ -12,11 +12,14 @@
             <li class="List" th:each="product : ${products}">
                      Produkt: <span th:text="${product.name}"></span><br/><br/>
                      Beskrivning: <span th:text="${product.description}"></span><br/><br/>
-                     Pris: <span th:text="${product.price}"></span>kr<br/><br/>
+                     Pris: <span th:text="${product.price}"></span> kr<br/><br/>
                     
             </li>
         </ul>
     </div> 
     <a href="/">Startsidan</a>
+    <div th:if="${#authorization.expression('isAuthenticated()')}">
+        <button type="submit">Lägg till i kundvagn</button>
+    </div>
 </body>
 </html>
