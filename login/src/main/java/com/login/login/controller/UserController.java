@@ -3,7 +3,9 @@ package com.login.login.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,22 +24,21 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/register")
-    public String getRegister() {
+    public String getRegister(Model model) {
+        model.addAttribute("user", new User());
         return "register";
     }
 
     @PostMapping("/register-account")
-    public String newmember(@RequestBody User user, RedirectAttributes r) {
-        // if (!user.equals(null)) {
-        userRepository.save(user);
+    public String newmember(@ModelAttribute User user, RedirectAttributes r) {
         String encryptedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encryptedPassword);
-        r.addFlashAttribute("registred", "Registrerad!");
+        userRepository.save(user);
 
-        return "redirect:/";
+        r.addFlashAttribute("registered", "Registrerad!");
+
+        System.out.println("Du registrerade ett konto med användarnamnet " + user.getUsername());
+
+        return "redirect:/login";
     }
-
-    // r.addFlashAttribute("errorMsgRegister", "Du måste fylla i alla fält!");
-    // return "redirect:/register";
-    // }
 }

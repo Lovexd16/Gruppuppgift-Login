@@ -10,14 +10,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.login.login.service.JpaUserDetailsService;
+
 @Configuration
 public class SecurityConfig {
 
-    // private final JpaUserDetailsservice jpaUserDetailservice;
+    private final JpaUserDetailsService jpaUserDetailsService;
 
-    // public SecurityConfig(JpaUserDetailsservice jpaUserDetailsservice) {
-    // this.jpaUserDetailsservice = jpaUserDetailsservice;
-    // }
+    public SecurityConfig(JpaUserDetailsService jpaUserDetailsService) {
+        this.jpaUserDetailsService = jpaUserDetailsService;
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -29,8 +31,9 @@ public class SecurityConfig {
                 .requestMatchers("/product/**").permitAll()
                 .requestMatchers("/register-account").permitAll()
                 .requestMatchers("/order").authenticated()
-        // ).anyRequest().authenticated()
-        )
+                .anyRequest().authenticated()
+                )
+                .userDetailsService(jpaUserDetailsService)
                 .formLogin(Customizer.withDefaults());
 
         return http.build();
