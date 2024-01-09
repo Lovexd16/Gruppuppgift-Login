@@ -17,9 +17,12 @@
         </ul>
     </div> 
     <a href="/register">Registrera dig</a>
-    <a href="/login">Logga in</a>
+    <div th:if="${#authorization.expression('isAnonymous()')}">
+        <a href="/login">Logga in</a>
+    </div>
     <div th:if="${#authorization.expression('isAuthenticated()')}">
         <a href="/order">Mina ordrar</a>
+        <a href="/logout">Logga ut</a>
     </div>
     
 </body>

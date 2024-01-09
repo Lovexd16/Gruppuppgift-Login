@@ -39,6 +39,6 @@ public class UserController {
 
         System.out.println("Du registrerade ett konto med användarnamnet " + user.getUsername());
 
-        return "redirect:/login";
+        return "redirect:/";
     }
 }
