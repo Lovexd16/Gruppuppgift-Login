@@ -12,13 +12,12 @@
             <li class="List" th:each="product : ${products}">
                 <a th:href="@{product/{id}(id=${product.id})}">
                      <span th:text="'Produkt: ' + ${product.name} + ' | Pris: ' + ${product.price} + ' kr'"></span></a>
-                     <!-- '<img th:src="@{'data:image/jpeg;base64,' + ${#strings.bytesToHexString(product.image)}}" alt="Bilden"> '   -->
             </li>
         </ul>
     </div> 
-    <a href="/register">Registrera dig</a>
     <div th:if="${#authorization.expression('isAnonymous()')}">
         <a href="/login">Logga in</a>
+        <a href="/register">Registrera dig</a>
     </div>
     <div th:if="${#authorization.expression('isAuthenticated()')}">
         <a href="/order">Mina ordrar</a>

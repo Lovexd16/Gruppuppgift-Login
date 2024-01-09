@@ -13,6 +13,7 @@
                      Produkt: <span th:text="${product.name}"></span><br/><br/>
                      Beskrivning: <span th:text="${product.description}"></span><br/><br/>
                      Pris: <span th:text="${product.price}"></span> kr<br/><br/>
+                     <img th:if="${product.image != null}" th:src="${product.image}" alt="Produktbild"/>
                     
             </li>
         </ul>
