@@ -2,7 +2,6 @@ package com.login.login.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -22,18 +21,21 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(auth -> auth
-
+        http
+            .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/register").permitAll()
                 .requestMatchers("/product/**").permitAll()
                 .requestMatchers("/register-account").permitAll()
                 .requestMatchers("/order").authenticated()
+                .requestMatchers("/css/**").permitAll()
                 .anyRequest().authenticated())
                 .userDetailsService(jpaUserDetailsService)
-                .formLogin(Customizer.withDefaults())
+                .formLogin(form -> form
+                .defaultSuccessUrl("/", true)
+                .permitAll())
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/"));
+                .logoutSuccessUrl("/"));
 
         return http.build();
     }
@@ -43,3 +45,4 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
+
