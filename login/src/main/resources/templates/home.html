@@ -21,10 +21,8 @@
         <a class="buttonheader" th:href="@{/register}">Registrera dig</a>
     </div>
     <div id="button-container" th:if="${#authorization.expression('isAuthenticated()')}">
-        <div>
-            <a class="buttonheader" th:href="@{/logout}">Logga ut</a>
-            <a class="buttonheader" th:href="@{/order}">Mina ordrar</a>
-        </div>
+        <a class="buttonheader" th:href="@{/logout}">Logga ut</a>
+        <a class="buttonheader" th:href="@{/order}">Mina ordrar</a>
     </div>
 </body>
 </html>

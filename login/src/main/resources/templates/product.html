@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/styleproduct.css" rel="stylesheet">
 </head>
 <body>
     
-    <div class="product">
+    <div id="productstyle">
         <ul>
             <li class="List" th:each="product : ${products}">
                      Produkt: <span th:text="${product.name}"></span><br/><br/>
                      Beskrivning: <span th:text="${product.description}"></span><br/><br/>
                      Pris: <span th:text="${product.price}"></span> kr<br/><br/>
                      <img th:src="${product.image}" alt="Produktbild"/>
-                    
             </li>
         </ul>
     </div> 
-    <a href="/">Startsidan</a>
+    <div id="button-container">
+        <a class="buttonheader" th:href="@{/}">Startsidan</a>
     <div th:if="${#authorization.expression('isAuthenticated()')}">
         <button type="submit">Lägg till i kundvagn</button>
     </div>
