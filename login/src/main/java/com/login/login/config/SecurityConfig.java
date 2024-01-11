@@ -29,10 +29,11 @@ public class SecurityConfig {
                 .requestMatchers("/product/**").permitAll()
                 .requestMatchers("/register-account").permitAll()
                 .requestMatchers("/order").authenticated()
-                .anyRequest().authenticated()
-                )
+                .anyRequest().authenticated())
                 .userDetailsService(jpaUserDetailsService)
-                .formLogin(Customizer.withDefaults());
+                .formLogin(Customizer.withDefaults())
+                .logout()
+                .logoutSuccessUrl("/");
 
         return http.build();
     }
