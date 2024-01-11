@@ -32,8 +32,8 @@ public class SecurityConfig {
                 .anyRequest().authenticated())
                 .userDetailsService(jpaUserDetailsService)
                 .formLogin(Customizer.withDefaults())
-                .logout()
-                .logoutSuccessUrl("/");
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/"));
 
         return http.build();
     }
