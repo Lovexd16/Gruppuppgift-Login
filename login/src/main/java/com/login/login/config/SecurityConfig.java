@@ -30,12 +30,12 @@ public class SecurityConfig {
                 .requestMatchers("/order").authenticated()
                 .requestMatchers("/css/**").permitAll()
                 .anyRequest().authenticated())
-            .userDetailsService(jpaUserDetailsService)
-            .formLogin(form -> form
+                .userDetailsService(jpaUserDetailsService)
+                .formLogin(form -> form
                 .defaultSuccessUrl("/", true)
                 .permitAll())
-            .logout(logout -> logout
-                    .logoutSuccessUrl("/"));
+                .logout(logout -> logout
+                .logoutSuccessUrl("/"));
 
         return http.build();
     }
