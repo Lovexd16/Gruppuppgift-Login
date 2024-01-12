@@ -9,10 +9,10 @@ import com.login.login.model.UserDto;
 import com.login.login.repository.UserRepository;
 
 @Service
-public class JpaUserDetailsService implements UserDetailsService{
+public class JpaUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
-    
+
     public JpaUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -20,9 +20,7 @@ public class JpaUserDetailsService implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username)
-        .map(UserDto::new)
-        .orElseThrow(() -> new UsernameNotFoundException("Hittade ingen användare"));
+                .map(UserDto::new)
+                .orElseThrow(() -> new UsernameNotFoundException("Hittade ingen användare"));
     }
-    
 }
-
