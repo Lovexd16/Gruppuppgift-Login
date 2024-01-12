@@ -16,10 +16,18 @@ h1 {
 }
 
 input[type="text"] {
-    width: 90%;
-    text-align: center;
+    width: 50%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="password"] {
+    width: 50%;
+    padding: 10px;
+    margin: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -35,28 +43,42 @@ input[type="text"] {
 }
 
 #product ul {
-    /* Stilar för <ul> inom #product */
-    list-style-type: none; /* Exempel: Ta bort punkterna från listan */
+    list-style-type: none;
 }
 
 #product ul li {
-    /* Stilar för <li> inom <ul> inom #product */
-    margin-bottom: 10px; /* Exempel: Lägg till marginal under varje listelement */
+    background-color: #afc9f7;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    
+}
+
+#product ul li:hover {
+    background-color: #c9dbfa;
 }
 
 #product ul li a {
-    /* Stilar för <a> inom <li> inom <ul> inom #product */
-    color: black; /* Exempel: Ändra textfärgen till svart */
-    text-decoration-color: #153367;
+    color: black;
+    text-decoration-line: none;
+}
+
+#form2 {
+    place-items: center; 
+    padding: 10px;
+    text-align: left;
 }
 
 .buttonheader {
     height: auto;
-    padding: 7px;
+    padding: 10px;
     background-color: #bbb; 
     color: black;
     border: none;
     border-radius: 4px;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-decoration: none;
 }
 
 .buttonheader:hover {
@@ -69,10 +91,29 @@ input[type="text"] {
     justify-content: center;
 }
 
-#button-container div {
-    height: 30px;
-    justify-content: space-around;
-    flex-direction: column;
-    padding: 8px;
-    align-items: center;
+#button-container-register {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+button {
+    height: auto;
+    padding: 10px;
+    background-color: #bbb; 
+    color: black;
+    border: none;
+    border-radius: 4px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #ccc; 
+}
+
+img {
+    height: 400px;
+    width: 500px;
 }

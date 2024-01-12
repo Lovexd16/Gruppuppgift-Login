@@ -1,0 +1,27 @@
+#productstyle {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+#productstyle ul {
+    list-style-type: none;
+}
+
+#productstyle ul li {
+    background-color: #afc9f7;
+    padding: 10px;
+    border-radius: 4px;
+    
+}
+
+#productstyle ul li:hover {
+    background-color: #c9dbfa;
+}
+
+#productstyle ul li a {
+    color: black;
+    text-decoration-line: none;
+}
