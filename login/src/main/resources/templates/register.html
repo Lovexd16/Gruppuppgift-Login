@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<link href="/css/style.css" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrera konto</title>
-    <link rel="stylesheet" href="/style.css"/>
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
     <h1>Skapa ett konto!</h1>
-    <p class="errorMessage" th:text="${errorMsgAdd}"></p>
+    <p class="errorMessage" th:if="${error}" th:text="${error}"></p>
         <div id="form2">
             <form th:action="@{/register-account}" method="post">
                 <input type="text" placeholder="Förnamn" name="fName" required>
