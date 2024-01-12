@@ -22,20 +22,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/").permitAll()
-                .requestMatchers("/register").permitAll()
-                .requestMatchers("/product/**").permitAll()
-                .requestMatchers("/register-account").permitAll()
-                .requestMatchers("/order").authenticated()
-                .requestMatchers("/css/**").permitAll()
-                .anyRequest().authenticated())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/order").authenticated()
+                        .anyRequest().permitAll())
                 .userDetailsService(jpaUserDetailsService)
                 .formLogin(form -> form
-                .defaultSuccessUrl("/", true)
-                .permitAll())
+                        .defaultSuccessUrl("/", true)
+                        .permitAll())
                 .logout(logout -> logout
-                .logoutSuccessUrl("/"));
+                        .logoutSuccessUrl("/"));
 
         return http.build();
     }
@@ -45,4 +40,3 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
-
